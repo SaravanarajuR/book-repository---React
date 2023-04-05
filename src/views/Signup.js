@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
-class Login extends Component {
+class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +13,6 @@ class Login extends Component {
     document.getElementById("password").type =
       type === "password" ? "text" : "password";
   };
-
   render() {
     return (
       <div className="Login">
@@ -43,8 +42,8 @@ class Login extends Component {
               </label>
             </div>
             <br />
-            <NavLink className="Link" to="/signup">
-              Register instead
+            <NavLink className="Link" to="/">
+              Login instead
             </NavLink>
           </div>
         </div>
@@ -53,4 +52,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Signup;

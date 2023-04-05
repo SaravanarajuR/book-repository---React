@@ -10,6 +10,13 @@ body {
   align-items: center;
 }
 
+.font {
+  color: white;
+  font-weight: 600;
+  font-size: 2rem;
+  padding: 20px;
+}
+
 .formInput {
   width: 500px;
   height: 500px;
