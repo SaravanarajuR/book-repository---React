@@ -20,18 +20,26 @@ class Login extends Component {
         <div className="formInput">
           <div className="formElements">
             <p className="font">Welcome Back</p>
-            <input
-              className="form-control"
-              placeholder="E-mail"
-              type="mail"
-            ></input>
-            <input
-              id="password"
-              className="form-control"
-              placeholder="Password"
-              type="password"
-            ></input>
-            <div>
+            <div className="form-group">
+              <label htmlFor="name">Email</label>
+              <input
+                className="form-control"
+                placeholder="E-mail"
+                type="mail"
+                name="mail"
+              ></input>
+            </div>
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <input
+                className="form-control"
+                placeholder="password"
+                type="password"
+                name="password"
+                id="password"
+              ></input>
+            </div>
+            <div className="checkBox">
               <input
                 name="show"
                 type="checkbox"
