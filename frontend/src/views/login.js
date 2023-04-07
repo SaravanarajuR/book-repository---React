@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, redirect } from "react-router-dom";
+import axios from "axios";
 
 class Login extends Component {
   constructor(props) {
@@ -10,22 +11,24 @@ class Login extends Component {
       warning: "",
     };
   }
-  async componentDidMount() {
-    const response = await fetch("/api");
-    console.log(response);
-  }
+  async componentDidMount() {}
+
   handleChange = (evt) => {
     this.setState(() => {
       return { [evt.target.id]: evt.target.value };
     });
   };
 
-  submit = (evt) => {
+  submitForm = async (evt) => {
     evt.preventDefault();
     if (this.state.password.length < 8) {
       this.setState({ warning: "password should be atleast 8 characters" });
     } else {
-      document.getElementById("submit").submit();
+      await axios.post("/", this.state).then((response) => {
+        if (response.data.success) {
+          return redirect("/signup");
+        }
+      });
     }
   };
 
@@ -38,7 +41,7 @@ class Login extends Component {
   render() {
     return (
       <div className="Login">
-        <form action="/" method="POST">
+        <form action="/" method="POST" id="form">
           <div className="formInput">
             <div className="formElements">
               <p className="font">Welcome Back</p>
@@ -84,11 +87,7 @@ class Login extends Component {
                 </label>
               </div>
               <div>
-                <button
-                  onClick={this.submit}
-                  id="submit"
-                  className="btn btn-light"
-                >
+                <button onClick={this.submitForm} className="btn btn-light">
                   Login
                 </button>
               </div>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 class Signup extends Component {
   constructor(props) {
@@ -11,17 +12,22 @@ class Signup extends Component {
       warning: "",
     };
   }
+
   handleChange = (evt) => {
     this.setState(() => {
       return { [evt.target.id]: evt.target.value };
     });
   };
-  submit = (evt) => {
+  submitForm = (evt) => {
     evt.preventDefault();
     if (this.state.pass.length < 8) {
       this.setState({ warning: "password should be atleast 8 characters" });
+    } else if (this.state.pass !== this.state.cpass) {
+      this.setState({ warning: "Password don't match" });
     } else {
-      document.getElementById("submit").submit();
+      axios.post("/signup", this.state).then(() => {
+        console.log("done");
+      });
     }
   };
   showPassword = () => {
@@ -92,11 +98,7 @@ class Signup extends Component {
                 </label>
               </div>
               <div>
-                <button
-                  id="submit"
-                  onClick={this.submit}
-                  className="btn btn-light"
-                >
+                <button onClick={this.submitForm} className="btn btn-light">
                   Register
                 </button>
               </div>
