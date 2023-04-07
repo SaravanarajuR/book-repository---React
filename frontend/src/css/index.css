@@ -8,7 +8,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: grey;
+  background-color: #5fa1b7;
 }
 .form-group {
   text-align: left;
@@ -17,23 +17,40 @@ body {
   align-items: center;
   justify-content: space-between;
 }
-
 .font {
   color: rgb(231, 70, 70);
   font-weight: 600;
   font-size: 2rem;
   padding: 20px;
 }
+.btn {
+  color: rgb(231, 70, 70);
+  margin: 10px 0;
+  padding: 10px 25px;
+}
+
+.warning {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.5);
+  width: auto;
+  padding: 10px 0;
+  border-radius: 10px;
+  color: black;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+}
 
 .formInput {
   width: 700px;
-  height: 500px;
+  height: auto;
   background-color: black;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 30px;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+  background: linear-gradient(to bottom, rgb(172, 211, 240), rgb(85, 198, 230));
+  padding: 20px;
 }
 
 .form-control {
@@ -44,7 +61,7 @@ body {
   margin-top: 10px;
 }
 .form-check-label {
-  color: white;
+  color: wblackhite;
   padding-left: 5px;
 }
 
@@ -54,9 +71,10 @@ body {
 
 .Link {
   text-decoration: none;
-  color: white;
+  color: rgb(231, 70, 70);
   padding: 10px;
   border-radius: 5px;
+  margin: 15px;
 }
 
 .Link:hover {
