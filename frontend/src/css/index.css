@@ -1,8 +1,99 @@
 body {
   font-family: "Times New Roman", Times, serif;
   font-size: 1.2rem;
+  height: 100%;
+  width: 100%;
 }
 
+.navbar {
+  height: auto;
+  padding-bottom: 5px 10px 10px 10px;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(
+    to bottom right,
+    rgb(128, 183, 225) 40%,
+    rgb(7, 160, 202) 60%
+  );
+  text-decoration: none;
+}
+.joinBtn {
+  padding: 10px 29px;
+  border-radius: 5px;
+  background-color: white;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.55) 0px 5px 15px;
+}
+.sloganFont-1 {
+  font-size-adjust: 0.5;
+  font-size: 3rem;
+  color: whitesmoke;
+  font-weight: 900;
+}
+.sloganFont-2 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+  font-weight: 500;
+}
+.sloganInner {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.about {
+  min-width: 350px;
+  max-width: 90%;
+  height: 200px;
+  text-align: center;
+  background-color: rgb(7, 160, 202);
+  margin: 5px;
+  border-radius: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+h1 {
+  font-family: "Roboto Slab", serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+.about-font {
+  font-size: 1.5rem;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+.slogan {
+  background: linear-gradient(to bottom, rgb(128, 183, 225), rgb(7, 160, 202));
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+.navbar-brand {
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: rgb(14, 92, 95);
+}
+
+.active-link {
+  color: red;
+}
 .Login {
   height: 100vh;
   display: flex;
@@ -79,4 +170,22 @@ body {
 
 .Link:hover {
   background-color: grey;
+}
+
+@media (max-width: 730px) {
+  .slogan {
+    height: auto;
+  }
+  .sloganInner {
+    margin-top: 30px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+  background-color: rgb(7, 160, 202);
+}
+::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 15px;
 }
