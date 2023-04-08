@@ -25,8 +25,12 @@ class Signup extends Component {
     } else if (this.state.pass !== this.state.cpass) {
       this.setState({ warning: "Password don't match" });
     } else {
-      axios.post("/signup", this.state).then(() => {
-        console.log("done");
+      axios.post("/signup", this.state).then((response) => {
+        if (response.data.warning) {
+          this.setState({ warning: response.data.warning });
+        } else {
+          window.location.href("/");
+        }
       });
     }
   };

@@ -21,22 +21,41 @@ app.get("/", (req, res) => {
 app.get("/signup", (req, res) => {});
 
 app.post("/signup", async (req, res) => {
-  const password = req.body.pass;
-  const hashedPassword = await bcrypt.hash(password, 10);
-  const user = new User({ mail: req.body.mail, password: hashedPassword });
-  user.save();
+  const findUser = await User.findOne({ mail: req.body.mail });
+  if (findUser === null) {
+    const password = req.body.pass;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = new User({ mail: req.body.mail, password: hashedPassword });
+    user.save();
+  } else {
+    return res.status(200).json({
+      warning: "mail already exists",
+    });
+  }
 });
 
 app.post("/", async (req, res) => {
   const data = await User.findOne({ mail: req.body.mail });
-  const found = await bcrypt.compare(req.body.password, data.password);
-  if (found) {
-    return res.status(200).json({
-      success: true,
-      redirect: "/",
-    });
+  if (data) {
+    const found = await bcrypt.compare(req.body.password, data.password);
+    if (found) {
+      return res.status(200).json({
+        success: true,
+        redirect: "/",
+      });
+    } else {
+      return res.status(200).json({
+        success: false,
+        redirect: "/",
+        warning: "Wrong Password",
+      });
+    }
   } else {
-    res.json({ message: "veliya poda" });
+    return res.status(200).json({
+      success: false,
+      redirect: "/",
+      warning: "Email does not exists",
+    });
   }
 });
 

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink, redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 
 class Login extends Component {
@@ -26,7 +26,10 @@ class Login extends Component {
     } else {
       await axios.post("/", this.state).then((response) => {
         if (response.data.success) {
-          return redirect("/signup");
+          return (window.location.href = "/signup");
+        } else if (!response.data.success) {
+          let warn = response.data.warning;
+          return this.setState({ warning: warn });
         }
       });
     }
