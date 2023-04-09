@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Navbar from "./navbar.js";
+import { NavLink } from "react-router-dom";
 
 class Home extends Component {
   render() {
@@ -21,9 +22,16 @@ class Home extends Component {
               <button className="joinBtn">Join Us</button>
             </div>
           </div>
+          <div>
+            <img
+              className="bookImg"
+              src="https://plus.unsplash.com/premium_photo-1675644727129-9e2fbc03c500?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1044&q=80"
+              alt="book"
+            />
+          </div>
         </section>
-
         <section className="row">
+          <p className="rowFont-1">What You'll get</p>
           <div className="col-sm-12 col-lg-4 col-md-6 about">
             <h1>Store</h1>
             <p className="about-font">
@@ -39,6 +47,56 @@ class Home extends Component {
           <div className="col-sm-12 col-lg-4 col-md-6 about">
             <h1>Share</h1>
             <p className="about-font">Share Books or notes with your friends</p>
+          </div>
+        </section>
+
+        <section className="details">
+          <div>
+            <img
+              className="Logo"
+              src="https://www.nicepng.com/png/full/8-83223_emoji-book-png.png"
+              alt="book"
+            />
+            <p className="navbar-brand"> BookNology</p>
+          </div>
+          <div className="detailsChild">
+            <NavLink className="nav-link" to="/home">
+              Home
+            </NavLink>
+            <NavLink className="nav-link" to="/contact">
+              Contact
+            </NavLink>
+            <NavLink className="nav-link" to="/support">
+              Support
+            </NavLink>
+            <NavLink className="nav-link" to="/faq">
+              FAQ
+            </NavLink>
+          </div>
+          <div className="detailsChild">
+            <NavLink className="nav-link" to="/">
+              Login
+            </NavLink>
+            <NavLink className="nav-link" to="/signup">
+              Register
+            </NavLink>
+            <NavLink className="nav-link" to="/books">
+              My Books
+            </NavLink>
+          </div>
+          <div className="detailsChild">
+            <NavLink className="nav-link" to="/home">
+              Home
+            </NavLink>
+            <NavLink className="nav-link" to="/contact">
+              Contact
+            </NavLink>
+            <NavLink className="nav-link" to="/support">
+              Support
+            </NavLink>
+            <NavLink className="nav-link" to="/faq">
+              FAQ
+            </NavLink>
           </div>
         </section>
       </div>
