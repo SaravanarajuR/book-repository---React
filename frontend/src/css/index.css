@@ -50,12 +50,22 @@ body {
   text-align: center;
 }
 
+.form-control {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 10px;
+  padding: 15px 9px;
+}
+.addBookForm {
+  display: grid;
+  place-items: center;
+}
 .details {
   width: 100%;
   height: 300px;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   background: linear-gradient(
     to bottom right,

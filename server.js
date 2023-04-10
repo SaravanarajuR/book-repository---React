@@ -3,12 +3,33 @@ import bodyparser from "body-parser";
 const app = express();
 import bcrypt from "bcrypt";
 import mongoose from "mongoose";
+import expressSession from "express-session";
+import connectMongoSession from "connect-mongodb-session";
+
+const mongoSession = connectMongoSession(expressSession);
 
 mongoose.connect(
   "mongodb+srv://saravana1:qwertyuioplkjhgfdsa@cluster0.gdr7v46.mongodb.net/booknology?retryWrites=true&w=majority"
 );
 
 import User from "./backend/models/userModel.js";
+
+import Book from "./backend/models/bookModel.js";
+
+const store = new mongoSession({
+  uri: "mongodb+srv://saravana1:qwertyuioplkjhgfdsa@cluster0.gdr7v46.mongodb.net/booknology?retryWrites=true&w=majority",
+  collection: "session",
+  interval: 3600000,
+});
+
+app.use(
+  expressSession({
+    saveUninitialized: false,
+    secret: "qwertyuioplkjhgfdsa",
+    resave: false,
+    store: store,
+  })
+);
 
 app.use(bodyparser.urlencoded({ extended: false }));
 
@@ -19,6 +40,14 @@ app.get("/", (req, res) => {
 });
 
 app.get("/signup", (req, res) => {});
+
+app.get("/books", (req, res) => {
+  res.json({
+    books: async () => {
+      await User.find({}).where("email").equals(window.localStorage.mail);
+    },
+  });
+});
 
 app.post("/signup", async (req, res) => {
   const findUser = await User.findOne({ mail: req.body.mail });
@@ -42,6 +71,7 @@ app.post("/", async (req, res) => {
       return res.status(200).json({
         success: true,
         redirect: "/",
+        mail: req.body.mail,
       });
     } else {
       return res.status(200).json({

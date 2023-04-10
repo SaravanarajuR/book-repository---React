@@ -20,18 +20,22 @@ class Signup extends Component {
   };
   submitForm = (evt) => {
     evt.preventDefault();
-    if (this.state.pass.length < 8) {
-      this.setState({ warning: "password should be atleast 8 characters" });
-    } else if (this.state.pass !== this.state.cpass) {
-      this.setState({ warning: "Password don't match" });
+    if (this.state.mail.length === 0) {
+      this.setState({ warning: "Email cannot be empty" });
     } else {
-      axios.post("/signup", this.state).then((response) => {
-        if (response.data.warning) {
-          this.setState({ warning: response.data.warning });
-        } else {
-          window.location.href("/");
-        }
-      });
+      if (this.state.pass.length < 8) {
+        this.setState({ warning: "password should be atleast 8 characters" });
+      } else if (this.state.pass !== this.state.cpass) {
+        this.setState({ warning: "Password don't match" });
+      } else {
+        axios.post("/signup", this.state).then((response) => {
+          if (response.data.warning) {
+            this.setState({ warning: response.data.warning });
+          } else {
+            window.location.href("/");
+          }
+        });
+      }
     }
   };
   showPassword = () => {
@@ -47,7 +51,7 @@ class Signup extends Component {
         <form method="POST" action="/signup">
           <div className="formInput">
             <div className="formElements">
-              <p className="font">Hi...There</p>
+              <p className="font">Create a BookNology account</p>
               <div className="form-group">
                 <label htmlFor="name">Email</label>
                 <input
@@ -58,6 +62,7 @@ class Signup extends Component {
                   name="mail"
                   id="mail"
                   onChange={this.handleChange}
+                  required
                 ></input>
               </div>
               <div className="form-group">

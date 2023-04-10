@@ -26,6 +26,8 @@ class Login extends Component {
     } else {
       await axios.post("/", this.state).then((response) => {
         if (response.data.success) {
+          window.localStorage.setItem("authenticated", true);
+          window.localStorage.setItem("mail", response.data.mail);
           return (window.location.href = "/signup");
         } else if (!response.data.success) {
           let warn = response.data.warning;

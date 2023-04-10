@@ -3,6 +3,9 @@ import Navbar from "./navbar.js";
 import { NavLink } from "react-router-dom";
 
 class Home extends Component {
+  handleJoin = () => {
+    window.location.href = "/signup";
+  };
   render() {
     return (
       <div>
@@ -19,7 +22,9 @@ class Home extends Component {
               </p>
             </div>
             <div>
-              <button className="joinBtn">Join Us</button>
+              <button onClick={this.handleJoin} className="joinBtn">
+                Join Us
+              </button>
             </div>
           </div>
           <div>
