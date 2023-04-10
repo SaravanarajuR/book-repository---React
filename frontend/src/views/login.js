@@ -28,7 +28,7 @@ class Login extends Component {
         if (response.data.success) {
           window.localStorage.setItem("authenticated", true);
           window.localStorage.setItem("mail", response.data.mail);
-          return (window.location.href = "/signup");
+          return (window.location.href = "/books");
         } else if (!response.data.success) {
           let warn = response.data.warning;
           return this.setState({ warning: warn });
